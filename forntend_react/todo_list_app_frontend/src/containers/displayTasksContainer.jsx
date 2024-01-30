@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-function DisplayTasksContainer() {
+function DisplayTasksContainer({task}) {
+    useEffect(()=> {console.log(typeof task);
+        console.log(task);
+    })
     return (
-        <h1>Hi</h1>
+        <React.Fragment>
+            <ol>
+                {task.map((element) => 
+                    <ul>
+                        <li>Task Name: {element.taskName}</li>
+                        <li>Task Description: {element.desc}</li>
+                    </ul>
+                )}
+            </ol>
+        </React.Fragment>
     );
 };
 
