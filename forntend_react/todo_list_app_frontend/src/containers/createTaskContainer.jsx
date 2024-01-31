@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import "./createTaskContainer.css";
+
 function CreateTaskContainer({task, setTask}) {
     const [taskName, setTaskName] = useState("");
     const [desc, setDesc] = useState("");
@@ -8,9 +10,17 @@ function CreateTaskContainer({task, setTask}) {
         let yourDate = new Date();
         return yourDate.toISOString().split('T')[0];        
     });
+    const [taskNameClass, setTaskNameClass] = useState("hidden");
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        const taskNameTrimmed = taskName.trim();
+        if(taskNameTrimmed.length===0){
+            setTaskNameClass("visible");
+            return;
+        } else {
+            setTaskNameClass("hidden");
+        }
         const formData = {};
         formData.taskName = taskName;
         formData.desc = desc;
@@ -36,6 +46,7 @@ function CreateTaskContainer({task, setTask}) {
                 name="taskName" 
                 onChange={(e) => setTaskName(e.target.value)} 
                 value={taskName} />
+                <p className={taskNameClass}>Task Name cannot be empty</p>
                 <br />
                 <label htmlFor="desc">Description</label>
                 <input type="text" 
