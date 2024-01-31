@@ -1,24 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import TaskListContainer from "./taskListContainer";
 
-function DisplayTasksContainer({task, setTask}) {
-    const handleDetele = (toBeDeletedIndex) => {
-        const updatedTask = task.filter((element, index) => index!==toBeDeletedIndex);
-        setTask(updatedTask);
-    }
+function DisplayTasksContainer({task, setTask, list}) {
+    const [filter, setFilter] = useState("All");
 
     return (
         <React.Fragment>
-            <ol>
-                {task.map((element, index) => 
-                    <li key={index}>
-                        <p>Task Name: {element.taskName}</p>
-                        <p>Task Description: {element.desc}</p>
-                        <p>Priority: {element.priority}</p>
-                        <p>Due Date: {element.dueDate}</p>
-                        <button onClick={()=>handleDetele(index)}>Delete</button>
-                    </li>
+            <label htmlFor="filter">Select filter</label>
+            <select value={filter} name="filter" onChange={(e)=>setFilter(e.target.value)}>
+                <option value="All">All</option>
+                {list.map((element, index)=>
+                    <option value={element} key={index}>{element}</option>
                 )}
-            </ol>
+            </select>
+            <TaskListContainer task={task} setTask={setTask} filter={filter} />
         </React.Fragment>
     );
 };
