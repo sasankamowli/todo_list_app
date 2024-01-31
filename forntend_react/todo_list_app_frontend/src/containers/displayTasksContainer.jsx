@@ -13,6 +13,8 @@ function DisplayTasksContainer({task, setTask}) {
                     <li key={index}>
                         <p>Task Name: {element.taskName}</p>
                         <p>Task Description: {element.desc}</p>
+                        <p>Priority: {element.priority}</p>
+                        <p>Due Date: {element.dueDate}</p>
                         <button onClick={()=>handleDetele(index)}>Delete</button>
                     </li>
                 )}
