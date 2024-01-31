@@ -9,16 +9,19 @@ function CreateTaskContainer({task, setTask}) {
         const formData = {};
         formData.taskName = taskName;
         formData.desc = desc;
-        setTask(...task, formData);
+        const updatedTask = [...task, formData];
+        setTask(updatedTask);
+        setTaskName("");
+        setDesc("");
     }
 
     return (
         <React.Fragment>
             <form onSubmit={handleSubmit}>
                 <label>Task name:</label>
-                <input type="text" onChange={(e) => setTaskName(e.target.value)} />
+                <input type="text" onChange={(e) => setTaskName(e.target.value)} value={taskName} />
                 <label>Description</label>
-                <input type="text" onChange={(e) => setDesc(e.target.value)} />
+                <input type="text" onChange={(e) => setDesc(e.target.value)} value={desc} />
                 <input type="submit" value="Create Task" />
             </form>
         </React.Fragment>

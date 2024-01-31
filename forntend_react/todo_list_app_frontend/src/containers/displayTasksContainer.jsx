@@ -7,11 +7,13 @@ function DisplayTasksContainer({task}) {
     return (
         <React.Fragment>
             <ol>
-                {task.map((element) => 
-                    <ul>
-                        <li>Task Name: {element.taskName}</li>
-                        <li>Task Description: {element.desc}</li>
-                    </ul>
+                {task.map((element, index) => 
+                    <li key={index}>
+                        <ul>
+                            <li>Task Name: {element.taskName}</li>
+                            <li>Task Description: {element.desc}</li>
+                        </ul>
+                    </li>
                 )}
             </ol>
         </React.Fragment>
