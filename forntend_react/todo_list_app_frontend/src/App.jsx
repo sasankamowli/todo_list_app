@@ -12,7 +12,7 @@ function App() {
     <React.Fragment>
       <ErrorBoundary>
         <CreateTaskContainer task={task} setTask={setTask} />
-        <DisplayTasksContainer task={task} />
+        <DisplayTasksContainer task={task} setTask={setTask} />
       </ErrorBoundary>
     </React.Fragment>
   )

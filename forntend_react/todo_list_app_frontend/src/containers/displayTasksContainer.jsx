@@ -1,18 +1,19 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-function DisplayTasksContainer({task}) {
-    useEffect(()=> {console.log(typeof task);
-        console.log(task);
-    })
+function DisplayTasksContainer({task, setTask}) {
+    const handleDetele = (toBeDeletedIndex) => {
+        const updatedTask = task.filter((element, index) => index!==toBeDeletedIndex);
+        setTask(updatedTask);
+    }
+
     return (
         <React.Fragment>
             <ol>
                 {task.map((element, index) => 
                     <li key={index}>
-                        <ul>
-                            <li>Task Name: {element.taskName}</li>
-                            <li>Task Description: {element.desc}</li>
-                        </ul>
+                        <p>Task Name: {element.taskName}</p>
+                        <p>Task Description: {element.desc}</p>
+                        <button onClick={()=>handleDetele(index)}>Delete</button>
                     </li>
                 )}
             </ol>
