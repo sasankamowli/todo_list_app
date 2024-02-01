@@ -13,6 +13,7 @@ function App() {
     <React.Fragment>
       <ErrorBoundary>
         <CreateTaskContainer task={task} setTask={setTask} list={list} />
+        <br />
         <DisplayTasksContainer task={task} setTask={setTask} list={list} />
       </ErrorBoundary>
     </React.Fragment>
