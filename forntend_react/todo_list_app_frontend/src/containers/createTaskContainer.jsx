@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { addTask } from "../redux/store";
 
 import "./createTaskContainer.css";
 
-function CreateTaskContainer({task, setTask, list}) {
+function CreateTaskContainer({list}) {
     const [taskNum,setTaskNum] = useState(0);
     const [taskName, setTaskName] = useState("");
     const [desc, setDesc] = useState("");
@@ -32,8 +33,7 @@ function CreateTaskContainer({task, setTask, list}) {
         formData.dueDate = dueDate;
         formData.priority = priority;
         formData.taskType = taskType;
-        const updatedTask = [...task, formData];
-        setTask(updatedTask);
+        addTask(formData);
         setTaskName("");
         setDesc("");
         setPriority("Select");

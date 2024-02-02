@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TaskListContainer from "./taskListContainer";
 
-function DisplayTasksContainer({task, setTask, list}) {
+function DisplayTasksContainer({list}) {
     const [filter, setFilter] = useState("All");
 
     return (
@@ -13,7 +13,7 @@ function DisplayTasksContainer({task, setTask, list}) {
                     <option value={element} key={index}>{element}</option>
                 )}
             </select>
-            <TaskListContainer task={task} setTask={setTask} filter={filter} />
+            <TaskListContainer filter={filter} />
         </React.Fragment>
     );
 };

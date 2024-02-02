@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+import { store, removeTask } from "../redux/store";
 
-function TaskListAll({task, setTask}){
+function TaskListAll(){
+    const [task, setTask] = useState(store.getState());
+    store.subscribe(()=>setTask(store.getState()));
+
     const handleDetele = (toBeDeletedTaskNum) => {
-        const updatedTask = task.filter((element) => element.taskNum!==toBeDeletedTaskNum);
-        setTask(updatedTask);
+        removeTask(toBeDeletedTaskNum);
     }
 
     return (
