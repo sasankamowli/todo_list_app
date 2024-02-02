@@ -1,11 +1,11 @@
 import { createStore } from 'redux';
 
 export const addTask = (taskItem) => {
-    store.dispatch({type: 'task/addTask', payload: taskItem});
+    return {type: 'task/addTask', payload: taskItem};
 };
 
 export const removeTask = (taskItem) => {
-    store.dispatch({type: 'task/removeTask', payload: taskItem});
+    return {type: 'task/removeTask', payload: taskItem};
 };
 
 const initialState = [];

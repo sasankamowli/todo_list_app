@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { addTask } from "../redux/store";
+import { store, addTask } from "../redux/store";
 
 import "./createTaskContainer.css";
 
@@ -33,7 +33,7 @@ function CreateTaskContainer({list}) {
         formData.dueDate = dueDate;
         formData.priority = priority;
         formData.taskType = taskType;
-        addTask(formData);
+        store.dispatch(addTask(formData));
         setTaskName("");
         setDesc("");
         setPriority("Select");

@@ -6,7 +6,7 @@ function TaskListFilter({filter}){
     store.subscribe(()=>setTask(store.getState()));
 
     const handleDetele = (toBeDeletedTaskNum) => {
-        removeTask(toBeDeletedTaskNum);
+        store.dispatch(removeTask(toBeDeletedTaskNum));
     }
 
     return(
